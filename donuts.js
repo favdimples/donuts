@@ -12,7 +12,7 @@ function mainLoop() {
     ctx.fillText("Score: " + score, 10, 30);
 
 
-    for (let n = 0; n < 3; n++) {
+    for (let n = 0; n < x.length; n++) {
         ctx.drawImage(donut, x[n],y[n],80,80);
         y[n] += speed[n];
         checkForHits(n);
@@ -30,6 +30,11 @@ function keyPressed(e) {
     let k = e.keyCode;
     if (k == 37) {changeX = -20;}
     if (k == 39) {changeX = 20;}
+    if( k == 65) {
+        x.push(Math.random()*600)
+        y.push(0)
+        speed.push(Math.random()*1+2)
+    }
 }
 
 document.onkeyup = keyReleased;
