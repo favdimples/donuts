@@ -11,6 +11,7 @@ function mainLoop() {
     ctx.font = "30px Arial";
     ctx.fillText("Score: " + score, 10, 30);
 
+
     for (let n = 0; n < 3; n++) {
         ctx.drawImage(donut, x[n],y[n],80,80);
         y[n] += speed[n];
@@ -30,6 +31,14 @@ function keyPressed(e) {
     if (k == 37) {changeX = -20;}
     if (k == 39) {changeX = 20;}
 }
+
+document.onkeyup = keyReleased;
+function keyReleased(a) {
+    let k = a.keyCode;
+    if (k == 37) {changeX = 0}
+    if (k == 39) {changeX = 0}
+}
+
 
 function checkForHits(n) {
     if (Math.abs(400-y[n] < 60) && Math.abs(dogX-x[n]) < 60) {
